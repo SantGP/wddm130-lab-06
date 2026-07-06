@@ -40,7 +40,15 @@
       <br/><br/>
 
       <input type="submit" value="Submit">
-      <p id="errors"></p>
+      <p id="errors">
+        <% if (typeof errorInfo !== 'undefined'){
+          for(var error of errorInfo){%>
+            <h3><%=error.msg %></h3>
+          <%
+          }
+        } %>
+
+      </p>
     </form>  
 </section>
 <section class="w50">
