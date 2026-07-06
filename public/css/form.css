@@ -1,5 +1,5 @@
 body{
-    background-color: #ad81d3;
+    background-color: #5191a5;
     font-family: 'Kalam', cursive;
     font-size: 20px;
     width: 960px;
@@ -63,7 +63,7 @@ input[type="submit"]{
     border: 0px;
     padding: 10px;
     height: 50px;
-    box-shadow: 4px 4px 0px #8c087a;
+    box-shadow: 4px 4px 0px #115f7e;
     border-radius: 8px;
 }
 input[type="submit"]:active{
