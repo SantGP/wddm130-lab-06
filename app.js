@@ -6,6 +6,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.urlencoded({extended:false}));
 const {check, validationResult} = require('express-validator'); // ES6 standard for destructuring an object
+const fileUpload = require('express-fileupload');
+app.use(fileUpload());
 
 app.get('/', (req, res) => {
 res.render('form');
@@ -44,6 +46,14 @@ app.post('/process',[
     var needLunch = req.body.lunch;
     var numTickets = req.body.tickets;
     var campus = req.body.campus;
+
+    //File Handling to accept and store the incoming image
+    var imageName = req.files.myImage.name;
+    var image = req.files.myImage;
+    var imagePath = 'public/images/'+imageName;
+    image.mv(imagePath,(err)=>{
+      console.log(err);
+    })
 
     var lunchCost = needLunch =="yes" ? 60:0;
     var ticketCost = numTickets * 100;
