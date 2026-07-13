@@ -54,6 +54,14 @@
 <section class="w50">
   <div class="formData">
     <p id="formResult">This is where the form data will show up.</p>
+    <%if(typeof receipt != 'undefined'){%>
+      <p>Name: <%=receipt.name%></p>
+      <p>Lunch: $ <%=receipt.lunchCost%></p>
+      <p>Ticket: $ <%=receipt.ticketCost%></p>
+      <p>Sub Total: $ <%=receipt.subTotal%></p>
+      <p>Taxes: <%=receipt.taxes.toFixed(2)%></p>
+      <p>Total: <%=receipt.total.toFixed(2)%></p>
+    <%}%>
   </div>
 </section>
 <div class="clear"></div>
