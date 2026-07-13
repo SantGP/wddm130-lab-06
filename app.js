@@ -14,7 +14,18 @@ res.render('form');
 //To handle the form info
 app.post('/process',[
   check('name', 'Must have a name').notEmpty(),
-  check('email', 'Must have email').isEmail()
+  check('email', 'Must have email').isEmail(),
+  check('lunch', 'Should select at least one').notEmpty(),
+  check('tickets', 'Should select at least one').notEmpty(),
+  check('campus', 'Should select a campus').notEmpty(),
+  check('postcode',"Invalid postal code").matches(/^[a-zA-Z]\d[a-zA-Z]\s\d[a-zA-Z]\d$/),
+  check('phone',"Invalid phone number").matches(/^\d{3}(\s|-)\d{3}(\s|-)\d{4}$/),
+
+  check('lunch').custom(async (value, {req})=>{
+    if (value == "yes" && req-body.tickets < 2){
+      throw new Error('If lunch selected, need at least 2 tickets');
+    }
+  })
   ],
 (req, res) => {
   
